@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ender-3 Neo + BigTreeTech Diagnostic</title>
+    <meta
+      name="description"
+      content="End-to-end diagnostic page for a used Ender-3 Neo with a BigTreeTech replacement motherboard."
+    />
+    <link rel="canonical" href="https://barrettvelker.com/ender-3-neo-btt-diagnostic.html" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="diagnostic-page">
+    <header class="site-header">
+      <div class="bar">
+        <a class="brand" href="./index.html">Barrett Velker</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#triage">Triage</a>
+          <a href="#btt">BTT board</a>
+          <a href="#firmware">Firmware</a>
+          <a href="#references">References</a>
+          <button class="nav-copy-button" type="button" data-copy-page>Copy page</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="pageText">
+      <section class="page-hero diagnostic-hero">
+        <div class="inner diagnostic-hero-grid">
+          <div>
+            <p class="eyebrow muted-eyebrow">Zack printer rescue brief</p>
+            <h1>Ender-3 Neo + BigTreeTech motherboard diagnostic</h1>
+            <p>
+              Use this to diagnose a used Creality Ender-3 Neo that was bought
+              on eBay and then fitted with a BigTreeTech motherboard. The goal
+              is to identify the exact board, wire it safely, choose the right
+              firmware path, and avoid a nozzle crash or board damage.
+            </p>
+            <p class="page-meta">
+              Last updated June 26, 2026. Assumption: the board is probably a
+              BIGTREETECH SKR Mini E3 V3.0 or V2.0 unless photos prove
+              otherwise.
+            </p>
+          </div>
+          <aside class="copy-agent-card" aria-labelledby="copyTitle">
+            <h2 id="copyTitle">Paste into an agent chat</h2>
+            <p>
+              This button copies the readable page text, source references, and
+              diagnostic prompt. Add photos of the board, wiring, screen, and
+              any error message after pasting.
+            </p>
+            <button class="button copy-page-button" type="button" data-copy-page>
+              Copy entire page
+            </button>
+            <p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="triage">
+        <div class="inner">
+          <div class="section-head">
+            <p class="eyebrow muted-eyebrow">First rule</p>
+            <h2>Do not flash firmware until the hardware identity is known.</h2>
+          </div>
+          <div class="diagnostic-grid">
+            <article class="panel">
+              <h3>1. Confirm the printer</h3>
+              <p>
+                Verify the front badge and frame. Ender-3 Neo, Ender-3 V2 Neo,
+                Max Neo, S1, and Pro are not interchangeable firmware targets.
+                The regular Ender-3 Neo usually has a CR Touch and a knob LCD,
+                but verify from photos instead of memory.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>2. Confirm the BTT board</h3>
+              <p>
+                Photograph the silkscreen text. Look for SKR MINI E3 V3.0,
+                SKR MINI E3 V2.0, SKR E3 DIP, or another BTT model. The exact
+                revision controls pin names, firmware target, fan ports, and
+                display compatibility.
+              </p>
+            </article>
+            <article class="panel warning-panel">
+              <h3>3. Treat Creality firmware as wrong</h3>
+              <p>
+                Once the Creality board is replaced by a BTT board, stock
+                Creality Ender-3 Neo firmware is usually the wrong artifact.
+                Use BTT firmware for that board or compile Marlin/Klipper for
+                the exact hardware.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="photo-list">
+        <div class="inner split">
+          <div class="section-head">
+            <p class="eyebrow muted-eyebrow">Required photos</p>
+            <h2>Ask Zack for these before guessing.</h2>
+          </div>
+          <div class="lede">
+            <ul class="checklist">
+              <li>Full motherboard photo with every connector visible.</li>
+              <li>Close-up of the printed board name and revision.</li>
+              <li>Close-up of the MCU chip marking.</li>
+              <li>Close-up of the CR Touch/BLTouch connector and Z-stop connector.</li>
+              <li>Screen front and screen rear board, including cable orientation.</li>
+              <li>Power supply voltage selector and power input terminals.</li>
+              <li>A photo or video of the exact boot, homing, heating, or error symptom.</li>
+            </ul>
+            <div class="callout">
+              Best reason this page could be wrong: "Bigtree motherboard" is
+              vague. If it is not an SKR Mini E3, the pinout and firmware path
+              may be different.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="btt">
+        <div class="inner">
+          <div class="section-head">
+            <p class="eyebrow muted-eyebrow">BTT board fork</p>
+            <h2>Most likely board paths.</h2>
+          </div>
+          <div class="stack-table-wrap">
+            <table class="stack-table diagnostic-table">
+              <thead>
+                <tr>
+                  <th>If the board says</th>
+                  <th>What that means</th>
+                  <th>What to check</th>
+                  <th>Firmware direction</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SKR MINI E3 V3.0</td>
+                  <td>Drop-in-style Ender-3 replacement board with onboard TMC2209 drivers and STM32G0B1 MCU.</td>
+                  <td>LCD12864/CR10-style display cable, CR Touch wiring, FAN0/FAN1/FAN2 placement, 12/24V input.</td>
+                  <td>BTT V3.0 firmware or custom Marlin/Klipper. File on SD card must be named firmware.bin.</td>
+                </tr>
+                <tr>
+                  <td>SKR MINI E3 V2.0</td>
+                  <td>Earlier SKR Mini E3 board. Similar intent, different hardware and firmware folder.</td>
+                  <td>BLTouch/CR Touch wiring photos, Z homing choice, screen cable, board fan wiring.</td>
+                  <td>BTT V2.0 firmware. Choose BLTouch-for-Z-homing if the probe replaces the Z switch.</td>
+                </tr>
+                <tr>
+                  <td>SKR E3 DIP or other BTT board</td>
+                  <td>Not the same as SKR Mini E3. Pinout and drivers may differ.</td>
+                  <td>Board model, removable driver modules, jumpers, display adapter, probe port pinout.</td>
+                  <td>Stop and use the exact BTT manual for that board.</td>
+                </tr>
+                <tr>
+                  <td>No readable board label</td>
+                  <td>The diagnosis is underdetermined.</td>
+                  <td>Improve photos under bright light or remove the board enough to read the silkscreen.</td>
+                  <td>Do not flash yet.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="symptoms">
+        <div class="inner">
+          <div class="section-head">
+            <p class="eyebrow muted-eyebrow">Symptom routing</p>
+            <h2>Match the failure to the likely subsystem.</h2>
+          </div>
+          <div class="diagnostic-grid">
+            <article class="panel">
+              <h3>No power</h3>
+              <p>
+                Check PSU voltage selector, power input polarity, fuse, loose
+                screw terminals, and strands bridging 24V to ground. Do not
+                repeatedly power-cycle a suspect short.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>Blank or frozen screen</h3>
+              <p>
+                Check display type and cable orientation. The BTT V3 manual
+                says the LCD screen supports LCD12864 with CR10_STOCKDISPLAY.
+                V2-style color screens can require adapters or separate
+                firmware.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>Probe fails or nozzle hits bed</h3>
+              <p>
+                Treat this as CR Touch/BLTouch wiring or firmware mode first.
+                The key fork is whether the probe is only for leveling or is
+                also the Z-homing switch.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>Firmware ignored</h3>
+              <p>
+                For SKR Mini E3, use a FAT32 microSD card, put one file at the
+                root, and name it firmware.bin. After a successful flash, many
+                boards rename it to FIRMWARE.CUR.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>Heating error</h3>
+              <p>
+                Do not heat until room-temperature hotend and bed readings are
+                plausible. A swapped or unplugged thermistor can look like a
+                firmware problem but is actually a wiring fault.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>Motors grind or move wrong</h3>
+              <p>
+                Stop homing. Check motor cable order and port labels first. If
+                the motion is sane when jogging but homing is wrong, inspect
+                endstop/probe logic next.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="firmware">
+        <div class="inner split">
+          <div class="section-head">
+            <p class="eyebrow muted-eyebrow">Firmware</p>
+            <h2>The safe firmware route.</h2>
+          </div>
+          <div class="lede">
+            <p>
+              For an SKR Mini E3 V3.0, BTT's own firmware folder lists three
+              Ender-3 options: base Ender-3, Ender-3 BLTouch, and Ender-3
+              BLTouch-for-Z-homing. Because the Ender-3 Neo normally has CR
+              Touch, the base firmware is probably not enough.
+            </p>
+            <p>
+              If Zack's CR Touch is the Z-homing sensor, start from the
+              BLTouch-for-Z-homing path or compile a custom build with the
+              correct probe offsets and bed size. If a physical Z switch is
+              still installed and used for homing, the normal BLTouch path may
+              be closer.
+            </p>
+            <p>
+              Strongest counterargument: precompiled BTT Ender-3 firmware may
+              boot quickly and be "good enough" for a basic Ender-3 shape. The
+              problem is that Neo-specific probe offsets, display assumptions,
+              and wiring state can still make it unsafe without verification.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="procedure">
+        <div class="inner">
+          <div class="section-head">
+            <p class="eyebrow muted-eyebrow">Procedure</p>
+            <h2>End-to-end diagnostic sequence.</h2>
+          </div>
+          <ol class="diagnostic-steps">
+            <li><strong>Unplug power.</strong> Open the electronics bay and photograph before touching anything.</li>
+            <li><strong>Identify board.</strong> Write down board model, revision, MCU, and any jumpers installed.</li>
+            <li><strong>Verify power wiring.</strong> PSU input selector, 24V polarity, bed heater, hotend heater, and fan voltage must make sense.</li>
+            <li><strong>Verify thermistors.</strong> Hotend thermistor goes to hotend temp input; bed thermistor goes to bed temp input.</li>
+            <li><strong>Verify fans.</strong> On SKR Mini E3 V3, do not assume every fan port behaves like Creality's board.</li>
+            <li><strong>Verify display.</strong> Confirm LCD12864/CR10-style display support or identify any adapter required.</li>
+            <li><strong>Verify CR Touch.</strong> Confirm it self-tests on power-up, then decide whether it is used for Z homing.</li>
+            <li><strong>Flash only after matching hardware.</strong> Use firmware.bin at SD root for SKR Mini E3. Use a fresh filename only on boards that require that behavior; BTT specifically says not to change this name.</li>
+            <li><strong>Boot check.</strong> Confirm screen, temperatures, and idle fans before moving axes.</li>
+            <li><strong>Jog check.</strong> Move X, Y, Z only a few millimeters. Do not auto-home until jog directions are sane.</li>
+            <li><strong>Homing check.</strong> Keep a hand on the power switch. Trigger the CR Touch or endstop logic before letting Z travel into the bed.</li>
+            <li><strong>Calibration.</strong> Set Z offset, tram bed, build mesh if enabled, save settings, then run a first-layer square.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="agent-prompt">
+        <div class="inner">
+          <div class="section-head">
+            <p class="eyebrow muted-eyebrow">Agent prompt</p>
+            <h2>Paste this with Zack's photos.</h2>
+          </div>
+          <pre class="agent-prompt"><code>I need help diagnosing a used Creality Ender-3 Neo with a BigTreeTech replacement motherboard.
+
+Known facts:
+- Exact printer model printed on the machine:
+- BTT board model/revision printed on motherboard:
+- MCU chip marking:
+- Display type and rear display-board photo:
+- CR Touch present? Connected? Self-test on power-up?
+- Is a physical Z endstop still installed?
+- Firmware file last flashed:
+- Does the SD card rename firmware.bin to FIRMWARE.CUR after boot?
+- Current symptom:
+
+Photos attached:
+- Full motherboard with all connectors visible.
+- Board model/revision close-up.
+- MCU close-up.
+- BLTouch/CR Touch and Z-stop wiring close-up.
+- Screen front and rear.
+- PSU voltage selector and power terminals.
+- Error screen or symptom video.
+
+Diagnose in this order:
+1. Safety and power wiring.
+2. Exact BTT board identity.
+3. Display compatibility.
+4. CR Touch/Z-homing wiring and firmware mode.
+5. Temperature sensor sanity.
+6. Motor/endstop port correctness.
+7. Correct firmware path for Marlin or Klipper.
+8. Lowest-risk next test.</code></pre>
+        </div>
+      </section>
+
+      <section class="section alt" id="references">
+        <div class="inner">
+          <div class="section-head">
+            <p class="eyebrow muted-eyebrow">References</p>
+            <h2>Specific source passages.</h2>
+          </div>
+          <div class="reference-list">
+            <article class="panel">
+              <h3>BTT SKR Mini E3 V3.0 user manual</h3>
+              <p>
+                Passage points: designed for Ender3; MCU is STM32G0B1RET6;
+                input power is DC 12/24V; onboard drivers are TMC2209; firmware
+                update uses firmware.bin at SD root; wiring must be complete
+                before power-on.
+              </p>
+              <a href="https://github.com/bigtreetech/BIGTREETECH-SKR-mini-E3/blob/master/hardware/BTT%20SKR%20MINI%20E3%20V3.0/Hardware/BTT%20SKR%20MINI%20E3%20V3.0%20user%20manual.pdf">Open manual</a>
+            </article>
+            <article class="panel">
+              <h3>BTT SKR Mini E3 V3.0 Marlin README</h3>
+              <p>
+                Passage points: rename firmware to firmware.bin; base Ender-3
+                firmware cannot support BLTouch; separate files exist for
+                normal BLTouch and BLTouch-for-Z-homing.
+              </p>
+              <a href="https://github.com/bigtreetech/BIGTREETECH-SKR-mini-E3/blob/master/firmware/V3.0/Marlin/README.md">Open firmware README</a>
+            </article>
+            <article class="panel">
+              <h3>BTT SKR Mini E3 V2.0 firmware README</h3>
+              <p>
+                Passage points: V2.0 also requires firmware.bin; includes
+                normal BLTouch and BLTouch-for-Z-homing options.
+              </p>
+              <a href="https://github.com/bigtreetech/BIGTREETECH-SKR-mini-E3/tree/master/firmware/V2.0">Open V2.0 firmware folder</a>
+            </article>
+            <article class="panel">
+              <h3>Creality Ender-3 Neo download page</h3>
+              <p>
+                Passage points: official page identifies the target printer as
+                Ender-3 Neo and lists a firmware download dated June 26, 2026.
+                Useful for stock-board context, not for flashing a BTT board.
+              </p>
+              <a href="https://www.creality.com/download/ender-3-neo-3d-printer">Open Creality page</a>
+            </article>
+            <article class="panel">
+              <h3>TH3D Creality board pinout reference</h3>
+              <p>
+                Passage points: helpful contrast for original Creality V4.2.2
+                and V4.2.7 wiring, especially BLTouch/CRTouch pin grouping.
+              </p>
+              <a href="https://tickets.th3dstudio.com/products/article/creality-v4-2-7-v4-2-2-wiring-and-pinout-diagram">Open TH3D reference</a>
+            </article>
+            <article class="panel">
+              <h3>mriscoc Ender3V2S1 discussion</h3>
+              <p>
+                Passage point: community firmware support for SKR Mini E3 V3
+                on V2-style machines can require a screen adapter. Relevant if
+                Zack's screen is not the original knob LCD.
+              </p>
+              <a href="https://github.com/mriscoc/Ender3V2S1/discussions/131">Open discussion</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="inner footer-copy">
+        <div class="footer-links">
+          <a href="./index.html">Home</a>
+          <a href="https://github.com/bigtreetech/BIGTREETECH-SKR-mini-E3">BTT GitHub</a>
+          <a href="https://www.creality.com/download/ender-3-neo-3d-printer">Creality Ender-3 Neo downloads</a>
+        </div>
+        <div>Barrett Velker</div>
+      </div>
+    </footer>
+
+    <script>
+      const getCopyText = () => {
+        const clone = document.body.cloneNode(true);
+        clone.querySelectorAll("script, style, button").forEach((node) => node.remove());
+        return [
+          document.title,
+          "URL: https://barrettvelker.com/ender-3-neo-btt-diagnostic.html",
+          "",
+          clone.innerText.replace(/\n{3,}/g, "\n\n").trim(),
+        ].join("\n");
+      };
+
+      const copyPage = async () => {
+        const status = document.getElementById("copyStatus");
+        const text = getCopyText();
+        try {
+          await navigator.clipboard.writeText(text);
+          if (status) status.textContent = "Copied. Paste it into the agent chat with the photos.";
+        } catch (error) {
+          const fallback = document.createElement("textarea");
+          fallback.value = text;
+          fallback.setAttribute("readonly", "");
+          fallback.style.position = "fixed";
+          fallback.style.left = "-9999px";
+          document.body.appendChild(fallback);
+          fallback.select();
+          document.execCommand("copy");
+          fallback.remove();
+          if (status) status.textContent = "Copied with fallback. Paste it into the agent chat.";
+        }
+      };
+
+      document.querySelectorAll("[data-copy-page]").forEach((button) => {
+        button.addEventListener("click", copyPage);
+      });
+    </script>
+  </body>
+</html>

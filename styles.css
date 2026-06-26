@@ -619,6 +619,136 @@ img {
   font-weight: 700;
 }
 
+.nav-copy-button {
+  font: inherit;
+  color: var(--accent);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.diagnostic-page .site-header {
+  background: rgba(244, 247, 244, 0.95);
+}
+
+.diagnostic-hero {
+  background:
+    linear-gradient(180deg, rgba(219, 236, 226, 0.94), rgba(244, 247, 244, 0.98)),
+    url("https://images.unsplash.com/photo-1634394367878-f6e5b7fb8566?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+}
+
+.diagnostic-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  gap: clamp(1.4rem, 4vw, 3rem);
+  align-items: end;
+}
+
+.copy-agent-card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.15rem;
+  box-shadow: var(--shadow);
+}
+
+.copy-agent-card h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.15rem;
+}
+
+.copy-agent-card p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.copy-agent-card .copy-status {
+  min-height: 1.4rem;
+  margin: 0.8rem 0 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.diagnostic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.warning-panel {
+  border-color: rgba(143, 45, 86, 0.42);
+  background: #fff9fb;
+}
+
+.diagnostic-table td:first-child {
+  font-weight: 800;
+}
+
+.diagnostic-steps {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding-left: 1.35rem;
+}
+
+.diagnostic-steps li {
+  padding-left: 0.25rem;
+}
+
+.agent-prompt {
+  margin: 0;
+  white-space: pre-wrap;
+  background: #111716;
+  color: #edf5ef;
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  overflow-x: auto;
+  box-shadow: var(--shadow);
+}
+
+.agent-prompt code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 0.92rem;
+}
+
+.reference-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.reference-list .panel {
+  box-shadow: none;
+}
+
+.reference-list a {
+  display: inline-block;
+  margin: 0.75rem 0.85rem 0 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .diagnostic-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .diagnostic-hero-grid,
+  .diagnostic-grid,
+  .reference-list {
+    grid-template-columns: 1fr;
+  }
+
+  .copy-agent-card {
+    align-self: stretch;
+  }
+}
+
 .form-shell {
   display: grid;
   gap: 0.9rem;
