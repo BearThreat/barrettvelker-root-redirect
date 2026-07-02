@@ -32,6 +32,22 @@
       color: #cfcfcf;
     }
 
+    .quality-note {
+      border-left: 3px solid #8bd3ff;
+      margin: 0 0 24px;
+      padding: 10px 0 10px 14px;
+      color: #e8e8e8;
+      background: #181818;
+    }
+
+    .quality-note p {
+      margin: 0 0 8px;
+    }
+
+    .quality-note p:last-child {
+      margin-bottom: 0;
+    }
+
     .videos {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -63,19 +79,26 @@
 <body>
   <main>
     <h1>Drone Flight Videos</h1>
-    <p>Recorded from Taygent on July 1, 2026. Compressed for mobile playback.</p>
+    <p>Recorded from Taygent on July 1, 2026.</p>
+
+    <section class="quality-note" aria-label="Video quality note">
+      <p>The embedded MP4 players below use compressed 720p H.264 copies for fast mobile playback.</p>
+      <p>The full-quality Taygent originals are available as downloads: <a href="https://github.com/BearThreat/barrettvelker-root-redirect/releases/download/drone-videos-20260701/PXL_20260701_231608999.mp4">Flight 1 original</a> and <a href="https://github.com/BearThreat/barrettvelker-root-redirect/releases/download/drone-videos-20260701/PXL_20260701_221754892.mp4">Flight 2 original</a>.</p>
+    </section>
 
     <section class="videos">
       <article>
         <h2>Flight 1</h2>
         <video controls preload="metadata" src="drone-flight-20260701-01.mp4"></video>
         <a href="drone-flight-20260701-01.mp4">Open MP4 directly</a>
+        <a href="https://github.com/BearThreat/barrettvelker-root-redirect/releases/download/drone-videos-20260701/PXL_20260701_231608999.mp4">Download full-quality original</a>
       </article>
 
       <article>
         <h2>Flight 2</h2>
         <video controls preload="metadata" src="drone-flight-20260701-02.mp4"></video>
         <a href="drone-flight-20260701-02.mp4">Open MP4 directly</a>
+        <a href="https://github.com/BearThreat/barrettvelker-root-redirect/releases/download/drone-videos-20260701/PXL_20260701_221754892.mp4">Download full-quality original</a>
       </article>
     </section>
   </main>
