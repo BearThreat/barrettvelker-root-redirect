@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Derrick Drone Handoff Guide</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f4f7f4;
+      color: #18221d;
+      --muted: #52635a;
+      --line: #d5ded8;
+      --accent: #245f46;
+      --warning: #8f2d56;
+      --surface: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    main {
+      width: min(100% - 32px, 940px);
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    header {
+      padding: 28px 0 16px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(30px, 5vw, 46px);
+      line-height: 1.05;
+    }
+
+    h2 {
+      margin: 32px 0 12px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 24px;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul,
+    ol {
+      margin: 0 0 16px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    code {
+      padding: 2px 5px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: #eef4f0;
+      font-size: 0.95em;
+    }
+
+    .meta,
+    .muted {
+      color: var(--muted);
+    }
+
+    .callout {
+      border-left: 4px solid var(--warning);
+      background: #fff;
+      padding: 14px 16px;
+      margin: 18px 0 24px;
+      box-shadow: 0 10px 24px rgba(24, 34, 29, 0.06);
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 8px;
+      padding: 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 20px 0 26px;
+    }
+
+    .toc a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 650;
+    }
+
+    .package-list > li {
+      margin-bottom: 14px;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      main {
+        width: 100%;
+        padding: 0;
+      }
+
+      .toc {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Derrick Drone Handoff Guide</h1>
+      <p class="meta">Started July 1, 2026. Use this as the operating checklist for the drone, radio, goggles, batteries, charger, and payload drop system.</p>
+    </header>
+
+    <section class="callout" aria-label="Critical safety summary">
+      <p><strong>Safety first:</strong> treat the drone as dangerous any time the propellers are installed. Do not arm indoors. If anything looks wrong, land and disarm.</p>
+    </section>
+
+    <nav class="toc" aria-label="Guide sections">
+      <a href="#safety">Safety</a>
+      <a href="#radio">Radio / Sticks</a>
+      <a href="#power">Power-On</a>
+      <a href="#switches">Switches</a>
+      <a href="#drop">Payload Drop</a>
+      <a href="#preflight">Preflight</a>
+      <a href="#flight">Flying</a>
+      <a href="#charging">Charging</a>
+      <a href="#handoff">Packing</a>
+    </nav>
+
+    <section id="safety">
+      <h2>Critical Safety Rules</h2>
+      <ol>
+        <li>Treat the drone as dangerous any time the propellers are installed.</li>
+        <li>Do not arm indoors.</li>
+        <li>Do not plug in the flight battery unless the radio is already on, throttle is all the way down, and the arm switch is disarmed.</li>
+        <li>Keep hands, wires, straps, clothing, and payload parts away from the propellers.</li>
+        <li>Do not stand over the drone while it is powered.</li>
+        <li>If anything looks wrong, land and disarm. Do not try to save a bad takeoff.</li>
+        <li>GPS Rescue exists, but do not rely on it for normal operation. It is not DJI-style guaranteed return-to-home.</li>
+      </ol>
+    </section>
+
+    <section id="radio">
+      <h2>Radio / Stick Basics</h2>
+      <ol>
+        <li>Open the radio.</li>
+        <li>Put all switches into the upward position.</li>
+        <li>Right stick centered in the middle.</li>
+        <li>Left stick pushed all the way down.</li>
+      </ol>
+      <ul>
+        <li>Left stick is throttle and yaw.</li>
+        <li>Left stick up gives the drone more power and increases height.</li>
+        <li>Left stick left/right rotates the drone like a head swivel.</li>
+        <li>Right stick tilts the drone in the direction the stick is pushed.</li>
+        <li>Right stick controls forward, back, left, and right movement.</li>
+      </ul>
+    </section>
+
+    <section id="power">
+      <h2>Normal Power-On Order</h2>
+      <ol>
+        <li>Turn on the radio. The radio must be on before the drone is plugged in, or the radio may not connect.</li>
+        <li>Take out the goggles.</li>
+        <li>Turn on the goggles: press the bottom power button once, wait two seconds, then hold it for five seconds.</li>
+        <li>Plug the flight battery into the drone.</li>
+        <li>You should hear a small spark and a couple of beeps, then the radio should connect.</li>
+        <li>Use only the yellow battery connector.</li>
+        <li>Tuck the white connector between the wires so it cannot flop into the propellers.</li>
+        <li>Put a twist in the battery cable so it stays stiff and away from the propeller blades.</li>
+        <li>Wait for the goggles/video feed and radio connection to look normal before arming.</li>
+      </ol>
+    </section>
+
+    <section id="switches">
+      <h2>Switches / Modes</h2>
+      <ul>
+        <li><code>SA</code>: arm/disarm. Only arm outdoors, in a clear area, with the drone sitting flat. Disarm immediately after landing.</li>
+        <li><code>SB</code>: flight mode. High = Angle, middle = Horizon, low = Acro. Use Angle or Horizon for handoff/basic flights.</li>
+        <li><code>SF</code>: beeper. Use to find the drone after landing.</li>
+        <li><code>SD</code>: turtle / flip-over-after-crash. Do not use unless the drone is upside down and the propellers have clear space around them.</li>
+      </ul>
+    </section>
+
+    <section id="drop">
+      <h2>Payload Servo Remote</h2>
+      <ul>
+        <li>Payload release uses the dedicated servo remote and rotational servo from the previous drone setup.</li>
+        <li>Charge the servo receiver with USB-C.</li>
+        <li>Turn on the servo receiver by long-pressing the black button on the side.</li>
+        <li>Turn on the servo receiver before loading the payload.</li>
+        <li>Press <code>ON</code> to engage the servo lock and hold the payload.</li>
+        <li>Press <code>OFF</code> to drop/release the payload.</li>
+        <li>Confirm <code>ON</code> is holding the payload before takeoff.</li>
+        <li>Keep the servo remote with the pilot or spotter during flight.</li>
+      </ul>
+
+      <h3>Payload / Drop Procedure</h3>
+      <p>Known tested result: the drone successfully carried a <code>2.6 lb</code> weight and dropped it in flight. One recorded example shows about a <code>2.4 lb</code> metal basket payload held with bungee cords. It flew, but bouncing/swinging made the flight path worse than a rigid, centered mount would.</p>
+      <ol>
+        <li>Mount the payload tight, centered, and close to the frame.</li>
+        <li>Do not use a swinging bag, long cord, or loose handle.</li>
+        <li>Turn on the servo receiver.</li>
+        <li>Press <code>ON</code> on the servo remote to engage the servo lock.</li>
+        <li>Tug/check the payload gently and confirm it is actually held.</li>
+        <li>Do a short hover first.</li>
+        <li>If stable, fly to the drop location.</li>
+        <li>Confirm the area below is clear.</li>
+        <li>Press <code>OFF</code> on the servo remote to drop the payload.</li>
+        <li>After the drop, expect the drone to feel lighter.</li>
+        <li>Land and inspect the drone.</li>
+      </ol>
+    </section>
+
+    <section id="preflight">
+      <h2>Preflight Checklist</h2>
+      <ol>
+        <li>Open outdoor area.</li>
+        <li>No people, cars, animals, or fragile things nearby.</li>
+        <li>Battery is strapped tight and cannot slide.</li>
+        <li>Payload is strapped tight, centered, close to the frame, and cannot swing.</li>
+        <li>Prop nuts are tight.</li>
+        <li>Wires and battery leads are twisted/tucked away from propellers.</li>
+        <li>The white battery balance connector is tucked away from propellers.</li>
+        <li>Goggles show video.</li>
+        <li>Radio is connected.</li>
+        <li>Throttle is all the way down.</li>
+        <li>Arm switch is disarmed before plugging in the battery.</li>
+        <li>If using a payload: servo receiver on, servo remote available, press <code>ON</code>, and confirm the servo lock is holding the payload.</li>
+      </ol>
+    </section>
+
+    <section id="flight">
+      <h2>Takeoff / Basic Flying / Landing</h2>
+      <h3>Takeoff</h3>
+      <ol>
+        <li>Set the drone on level ground.</li>
+        <li>Stand back.</li>
+        <li>Arm with <code>SA</code>.</li>
+        <li>Slowly raise the left stick until the drone becomes light on the ground.</li>
+        <li>If it tilts hard, wobbles, or sounds wrong, lower throttle, land, and disarm.</li>
+        <li>For normal takeoff, lift to about waist height or lower until comfortable.</li>
+        <li>Make small stick movements. This drone is powerful and does not hold position like a DJI camera drone.</li>
+      </ol>
+      <h3>Basic Flying</h3>
+      <ul>
+        <li>Use small, smooth inputs.</li>
+        <li>Left stick up/down controls height.</li>
+        <li>Left stick left/right rotates the drone.</li>
+        <li>Right stick moves the drone forward/back/left/right.</li>
+        <li>Do not do hard punch-outs or aggressive moves with a payload until repeat flights are boring.</li>
+        <li>If it starts drifting, gently correct with the right stick. Do not chase it with large inputs.</li>
+      </ul>
+      <h3>Landing / Shutdown</h3>
+      <ol>
+        <li>Descend slowly.</li>
+        <li>Touch down gently.</li>
+        <li>Bring throttle all the way down.</li>
+        <li>Disarm with <code>SA</code>.</li>
+        <li>Unplug the drone battery.</li>
+        <li>Turn off goggles.</li>
+        <li>Turn off radio.</li>
+        <li>Check all motors by touch. Warm is okay. Hot-to-touch means stop and do not fly again until inspected.</li>
+        <li>Check battery, straps, wires, prop nuts, and payload mount.</li>
+      </ol>
+      <h3>Emergency Actions</h3>
+      <ul>
+        <li>If the drone wobbles badly: land and disarm.</li>
+        <li>If it leans hard on takeoff: lower throttle, land, disarm.</li>
+        <li>If it is drifting toward people or property: climb slightly if needed for clearance, steer away, then land.</li>
+        <li>If video looks bad before takeoff: do not arm.</li>
+        <li>If radio does not connect: unplug the drone battery, turn radio on first, then plug the drone battery back in.</li>
+        <li>If a propeller hits anything: disarm immediately and inspect before any further flight.</li>
+        <li>If the battery cable or white balance connector is loose near props: do not fly.</li>
+      </ul>
+    </section>
+
+    <section id="charging">
+      <h2>Battery Charging / Storage</h2>
+      <p>Use the charger package and keep the battery adapters with the charger. The large battery terminals use adapters to shrink them down so they fit the charger.</p>
+      <ol>
+        <li>Plug in the cell voltage lead.</li>
+        <li>Plug in the main positive and negative terminals using the charger adapters.</li>
+        <li>Use channel selection until the correct battery screen is selected.</li>
+        <li>Press the scroll wheel.</li>
+        <li>Scroll all the way down.</li>
+        <li>Select <code>Start Task</code> to begin charging.</li>
+      </ol>
+      <h3>Charging Current</h3>
+      <ul>
+        <li>Typical charge current is <code>1A</code> to <code>3A</code>.</li>
+        <li><code>3A</code> usually charges a battery from low to full in about <code>25-30 minutes</code>.</li>
+        <li>Lower amperage is better for battery health and longevity, but takes longer.</li>
+        <li>The charger should automatically adapt to the battery type and charge each cell back up to <code>4.2V</code>.</li>
+      </ul>
+      <h3>Runtime / Voltage</h3>
+      <ul>
+        <li>Current batteries cost about <code>$45</code> each.</li>
+        <li>Expected flight time is about <code>4-5.5 minutes</code> if not pushing the drone hard.</li>
+        <li>Short hard throttle bursts should be okay, but sustained heavy flying or heavy payloads drain faster.</li>
+        <li>Loose or swinging payloads drain battery and make control harder.</li>
+        <li>A double-capacity battery would cost around <code>$120</code>, but would not give exactly twice the flight time because the extra weight makes the drone work harder.</li>
+        <li>In theory, the drone should be able to handle roughly another <code>1.5 lb</code> beyond the tested payload, but that would use battery faster and should be tested carefully.</li>
+        <li>Watch the voltage number in the bottom-left of the headset.</li>
+        <li>Land when it gets around <code>3.6V</code> per cell.</li>
+        <li><code>3.6V</code> per cell is about as low as you should safely run the battery without risking semi-permanent internal battery damage.</li>
+      </ul>
+      <h3>Charging Safety</h3>
+      <ul>
+        <li>Do not leave charging unattended.</li>
+        <li>Charge on a nonflammable surface.</li>
+        <li>Stop using a battery if it is puffed, damaged, leaking, or smells wrong.</li>
+        <li>Let batteries cool before charging.</li>
+        <li>Store batteries at storage voltage when not flying again soon.</li>
+      </ul>
+    </section>
+
+    <section id="handoff">
+      <h2>Handoff Packing</h2>
+      <p>Everything comes in three packages.</p>
+      <ol class="package-list">
+        <li><strong>Core cinadrone lifter package</strong>
+          <ul>
+            <li>Drone/lifter.</li>
+            <li>Tools.</li>
+            <li>Two full sets of extra propellers.</li>
+          </ul>
+        </li>
+        <li><strong>Radio package</strong>
+          <ul>
+            <li>Radio transmitter.</li>
+          </ul>
+        </li>
+        <li><strong>DJI goggles / battery / charger / drop package</strong>
+          <ul>
+            <li>DJI goggles.</li>
+            <li>Two giant drone batteries.</li>
+            <li>Drone battery charger.</li>
+            <li>Battery terminal adapters for the charger.</li>
+            <li>Drop servo receiver.</li>
+            <li>Drop servo transmitter/remote.</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+  </main>
+</body>
+</html>
