@@ -31,10 +31,19 @@
           private controllers, and the match is built around readable ricochet
           chaos.
         </p>
+        <div class="mode-panel" aria-label="Party Tanks URL mode">
+          <div class="mode-tabs" role="group" aria-label="Testing URL mode">
+            <button class="mode-tab" type="button" data-mode="live" aria-pressed="true">Live</button>
+            <button class="mode-tab" type="button" data-mode="local" aria-pressed="false">Local</button>
+          </div>
+          <p class="mode-status" id="modeStatus">Live friend-test links</p>
+          <code class="base-url" id="baseUrl">https://blackbear.tail0b3173.ts.net:14443</code>
+        </div>
         <div class="actions">
-          <a class="button" href="https://blackbear.tail0b3173.ts.net:14443/tv.html?room=TANK7">Open TV</a>
-          <a class="button secondary" href="https://blackbear.tail0b3173.ts.net:14443/controller.html?room=TANK7">Open Controller</a>
-          <a class="button secondary" href="https://blackbear.tail0b3173.ts.net:14443/join.html?room=TANK7">Join Page</a>
+          <a class="button" data-route="tv" href="https://blackbear.tail0b3173.ts.net:14443/tv.html?room=TANK7">Open TV</a>
+          <a class="button secondary" data-route="controller" href="https://blackbear.tail0b3173.ts.net:14443/controller.html?room=TANK7">Open Controller</a>
+          <a class="button secondary" data-route="join" href="https://blackbear.tail0b3173.ts.net:14443/join.html?room=TANK7">Join Page</a>
+          <a class="button secondary" data-route="actions" href="https://blackbear.tail0b3173.ts.net:14443/debug/actions?roomId=TANK7&limit=200">Action Log</a>
         </div>
       </div>
       <figure class="preview">
@@ -59,5 +68,6 @@
       </div>
     </section>
   </main>
+  <script src="./launcher.js"></script>
 </body>
 </html>

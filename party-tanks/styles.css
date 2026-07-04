@@ -126,6 +126,58 @@ p {
   border: 1px solid var(--line);
 }
 
+.mode-panel {
+  width: min(100%, 31rem);
+  margin-top: 1.25rem;
+  padding: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(21, 27, 32, 0.72);
+}
+
+.mode-tabs {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(5rem, 1fr));
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(11, 13, 16, 0.82);
+}
+
+.mode-tab {
+  min-height: 2.25rem;
+  border: 0;
+  border-radius: calc(var(--radius) - 2px);
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.mode-tab[aria-pressed="true"] {
+  background: var(--accent-2);
+  color: #081017;
+}
+
+.mode-status {
+  margin-top: 0.7rem;
+  font-size: 0.94rem;
+}
+
+.base-url {
+  display: block;
+  margin-top: 0.45rem;
+  padding: 0.55rem 0.65rem;
+  overflow-wrap: anywhere;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: rgba(11, 13, 16, 0.88);
+  color: var(--ink);
+  font-size: 0.82rem;
+}
+
 .preview {
   margin: 0;
   border: 1px solid var(--line);
