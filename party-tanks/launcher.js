@@ -13,7 +13,7 @@ const ROUTES = {
   tv: "/tv.html?room=TANK7",
   controller: "/controller.html?room=TANK7",
   join: "/join.html?room=TANK7",
-  actions: "/debug/actions?roomId=TANK7&limit=200"
+  actions: "/debug/actions?roomId=TANK7&limit=200&currentBuild=true"
 };
 
 const params = new URLSearchParams(window.location.search);
