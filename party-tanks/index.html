@@ -6,7 +6,7 @@
   <title>Party Tanks | Barrett Velker</title>
   <meta
     name="description"
-    content="Party Tanks is a fast browser tank arena prototype with bounce shots, AI opponents, controller haptics, and audio."
+    content="Launch Party Tanks, a Jackbox-style shared-screen tank party game with phone controllers."
   >
   <link rel="canonical" href="https://barrettvelker.com/party-tanks/">
   <link rel="stylesheet" href="./styles.css">
@@ -16,64 +16,48 @@
     <a class="brand" href="../index.html">Barrett Velker</a>
     <nav class="nav" aria-label="Primary">
       <a href="../index.html#work">Work</a>
-      <a href="https://github.com/BearThreat">GitHub</a>
       <a href="https://x.com/Bear_the_AI_guy">X</a>
+      <a href="https://github.com/BearThreat">GitHub</a>
     </nav>
   </header>
 
-  <main class="shell">
-    <section class="game-column" aria-label="Party Tanks game">
-      <canvas id="arena" width="1280" height="720" aria-label="Party Tanks arena"></canvas>
-      <div class="touch-deck" aria-label="Touch controls">
-        <div class="stick" id="moveStick"><span></span></div>
-        <button class="fire-pad" id="firePad" type="button" aria-label="Charge and fire"></button>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Room TANK7</p>
+        <h1>Party Tanks</h1>
+        <p>
+          A shared-screen tank party game: the TV runs the arena, phones become
+          private controllers, and the match is built around readable ricochet
+          chaos.
+        </p>
+        <div class="actions">
+          <a class="button" href="https://blackbear.tail0b3173.ts.net:14443/tv.html?room=TANK7">Open TV</a>
+          <a class="button secondary" href="https://blackbear.tail0b3173.ts.net:14443/controller.html?room=TANK7">Open Controller</a>
+          <a class="button secondary" href="https://blackbear.tail0b3173.ts.net:14443/join.html?room=TANK7">Join Page</a>
+        </div>
       </div>
+      <figure class="preview">
+        <img src="../assets/party-tanks-tv.png" alt="Party Tanks TV arena preview">
+      </figure>
     </section>
 
-    <aside class="status-panel" aria-label="Game status">
-      <div>
-        <p class="eyebrow">Party Tanks</p>
-        <h1>Bounce twice. Stay moving.</h1>
+    <section class="section">
+      <div class="grid">
+        <article>
+          <span>Format</span>
+          <strong>Jackbox-style TV plus phones</strong>
+        </article>
+        <article>
+          <span>Controls</span>
+          <strong>Track sliders or Brawl-style sticks</strong>
+        </article>
+        <article>
+          <span>Runtime</span>
+          <strong>Live Node/WebSocket service on Blackbear</strong>
+        </article>
       </div>
-
-      <div class="score-row" aria-label="Scoreboard">
-        <div>
-          <span>Player</span>
-          <strong id="playerScore">0</strong>
-        </div>
-        <div>
-          <span>AI</span>
-          <strong id="aiScore">0</strong>
-        </div>
-        <div>
-          <span>FPS</span>
-          <strong id="fps">60</strong>
-        </div>
-      </div>
-
-      <div class="meters">
-        <label>
-          <span>Charge</span>
-          <meter id="chargeMeter" min="0" max="1" value="0"></meter>
-        </label>
-        <label>
-          <span>Armor</span>
-          <meter id="armorMeter" min="0" max="100" value="100"></meter>
-        </label>
-      </div>
-
-      <div class="actions">
-        <button class="button" id="audioButton" type="button">Audio</button>
-        <button class="button secondary" id="resetButton" type="button">Reset</button>
-      </div>
-
-      <div class="control-grid" aria-label="Input status">
-        <span id="inputStatus">Keyboard / pointer</span>
-        <span id="hapticStatus">Haptics ready</span>
-      </div>
-    </aside>
+    </section>
   </main>
-
-  <script src="./game.js"></script>
 </body>
 </html>
