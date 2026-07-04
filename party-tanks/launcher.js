@@ -1,6 +1,6 @@
 const URL_MODES = {
   live: {
-    label: "Live friend-test links",
+    label: "Tailnet testing links",
     base: "https://blackbear.tail0b3173.ts.net:14443"
   },
   local: {
